@@ -1,38 +1,94 @@
-# Pollen Site
+# Pollen AI Website
 
-A simple, clean website built with HTML and CSS, hosted on GitHub Pages.
+## Overview
+This is the official pre-launch website for Pollen AI - a futuristic, innovative AI company.
 
-## Features
+## Domain Information
+- Primary domain: `pollenhq.com`
+- All form submissions send notifications to: `a.anmolgarg@gmail.com`
 
-- Responsive design
-- Clean and modern interface
-- Easy to customize
+## Directory Structure
 
-## Development
+```
+pollen-site/
+├── public/             # Static files served to the client
+│   ├── css/           # Compiled CSS files
+│   │   └── styles.css # Main stylesheet
+│   ├── js/            # JavaScript files
+│   │   └── main.js    # Main JavaScript file
+│   ├── images/        # Image assets
+│   ├── fonts/         # Font files
+│   ├── index.html     # Homepage
+│   ├── about.html     # About page
+│   ├── contact.html   # Contact page
+│   ├── thanks.html    # Thank you page after form submissions
+│   ├── favicon.ico    # Site favicon
+│   ├── CNAME          # Domain configuration for GitHub Pages
+│   ├── robots.txt     # Instructions for web crawlers
+│   └── sitemap.xml    # Site structure for search engines
+├── src/               # Source files for development
+│   ├── css/           # CSS source files
+│   │   └── styles.css # Main CSS source
+│   ├── js/            # JS source files
+│   └── assets/        # Original assets
+│       ├── images/    # Image source files
+│       └── fonts/     # Font source files
+├── package.json       # Project dependencies and scripts
+└── README.md          # Project documentation
+```
 
-To work on this project locally:
+## Getting Started
 
+### Prerequisites
+- Node.js and npm
+
+### Installation
 1. Clone the repository
    ```
    git clone https://github.com/yourusername/pollen-site.git
    cd pollen-site
    ```
 
-2. Make your changes to the HTML, CSS, or add JavaScript files
-
-3. Commit and push your changes
+2. Install dependencies
    ```
-   git add .
-   git commit -m "Your commit message"
-   git push origin main
+   npm install
    ```
 
-4. Your changes will automatically be deployed to GitHub Pages
+3. Start the development server
+   ```
+   npm start
+   ```
 
-## GitHub Pages
+4. The site will be available at `http://localhost:3000`
 
-This site is hosted using [GitHub Pages](https://pages.github.com/). Any changes pushed to the main branch will automatically be deployed.
+## Email Form Configuration
+The site uses FormSubmit.co to handle email form submissions. All submissions are forwarded to `a.anmolgarg@gmail.com`.
+
+## Development
+
+### Workflow
+1. Make changes to files in the `src` directory
+2. For simple testing, copy changes to the public directory
+3. In a production environment, use a build process (not set up in this repository)
+
+## Deployment
+The contents of the `public` directory can be deployed to any static hosting service such as:
+
+### GitHub Pages
+1. Push your repository to GitHub
+2. Enable GitHub Pages in the repository settings
+3. Set it to deploy from the `main` branch /docs folder or from the gh-pages branch
+4. The CNAME file in the public directory will configure the custom domain
+
+### Netlify
+1. Connect your GitHub repository to Netlify
+2. Configure Netlify to deploy from the `public` directory
+3. Configure your custom domain in Netlify's domain settings
+
+### Vercel
+1. Connect your GitHub repository to Vercel
+2. Configure Vercel to deploy from the `public` directory
+3. Configure your custom domain in Vercel's domain settings
 
 ## License
-
-This project is open source and available under the [MIT License](LICENSE).
+MIT

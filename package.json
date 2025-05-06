@@ -1,0 +1,24 @@
+{
+  "name": "pollen-site",
+  "version": "1.0.0",
+  "description": "Pollen AI pre-launch website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx serve public",
+    "deploy:gh-pages": "echo 'To deploy to GitHub Pages, commit and push to your repository'",
+    "deploy:netlify": "echo 'To deploy to Netlify, connect your repository or upload the public directory'",
+    "deploy:vercel": "echo 'To deploy to Vercel, connect your repository or use the Vercel CLI'"
+  },
+  "author": "Pollen AI",
+  "license": "MIT",
+  "homepage": "https://pollenhq.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/pollen-site.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
