@@ -68,7 +68,9 @@ The site uses FormSubmit.co to handle email form submissions:
 
 - Form action points to: `https://formsubmit.co/578761bededd12526fd059ae22f62352`
 - This is a secure endpoint that forwards submissions to `a.anmolgarg@gmail.com`
-- Successful submissions are redirected to the thanks.html page
+- Successful submissions redirect back to the homepage with a success parameter
+- A thank you message is displayed on the homepage after submission
+- This approach keeps users on the site without requiring a separate thank you page
 
 ## Directory Configuration
 - The site is configured to automatically display the contents of the /public directory
