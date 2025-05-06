@@ -5,7 +5,7 @@ This is the official pre-launch website for Pollen AI - a futuristic, innovative
 
 ## Domain Information
 - Primary domain: `pollenhq.com`
-- All form submissions send notifications to: `a.anmolgarg@gmail.com`
+- All form submissions send notifications to: `a.anmolgarg@gmail.com` (via FormSubmit.co)
 
 ## Directory Structure
 
@@ -25,7 +25,8 @@ pollen-site/
 │   ├── favicon.ico    # Site favicon
 │   ├── CNAME          # Domain configuration for GitHub Pages
 │   ├── robots.txt     # Instructions for web crawlers
-│   └── sitemap.xml    # Site structure for search engines
+│   ├── sitemap.xml    # Site structure for search engines
+│   └── .htaccess      # Apache server configuration
 ├── src/               # Source files for development
 │   ├── css/           # CSS source files
 │   │   └── styles.css # Main CSS source
@@ -33,6 +34,7 @@ pollen-site/
 │   └── assets/        # Original assets
 │       ├── images/    # Image source files
 │       └── fonts/     # Font source files
+├── .htaccess          # Root-level redirect to public directory
 ├── package.json       # Project dependencies and scripts
 └── README.md          # Project documentation
 ```
@@ -62,7 +64,15 @@ pollen-site/
 4. The site will be available at `http://localhost:3000`
 
 ## Email Form Configuration
-The site uses FormSubmit.co to handle email form submissions. All submissions are forwarded to `a.anmolgarg@gmail.com`.
+The site uses FormSubmit.co to handle email form submissions:
+
+- Form action points to: `https://formsubmit.co/578761bededd12526fd059ae22f62352`
+- This is a secure endpoint that forwards submissions to `a.anmolgarg@gmail.com`
+- Successful submissions are redirected to the thanks.html page
+
+## Directory Configuration
+- The site is configured to automatically display the contents of the /public directory
+- This is managed through .htaccess configurations at both the root and public directory levels
 
 ## Development
 

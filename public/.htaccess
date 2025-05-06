@@ -58,6 +58,13 @@
   AddOutputFilterByType DEFLATE text/xml
 </IfModule>
 
+# Default directory index
+DirectoryIndex index.html index.php
+
+# Show public directory contents by default
+Options +Indexes
+IndexOptions FancyIndexing FoldersFirst NameWidth=* DescriptionWidth=*
+
 # Force HTTPS
 <IfModule mod_rewrite.c>
   RewriteEngine On

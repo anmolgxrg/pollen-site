@@ -1,0 +1,11 @@
+# Redirect all requests to the public directory
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^$ public/ [L]
+  RewriteRule (.*) public/$1 [L]
+</IfModule>
+
+# If mod_rewrite is not available, use redirect
+<IfModule !mod_rewrite.c>
+  RedirectMatch 302 ^/$ /public/
+</IfModule>
