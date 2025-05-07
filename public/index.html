@@ -3,50 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pollen | coming soon</title>
-    <meta name="description" content="pollen - AI solutions for the future. Coming soon.">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>pollen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #0B0B19; /* Dark background */
+        }
+
+        .animation-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* Plant stem and base */
+        .plant {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .stem {
+            position: absolute;
+            width: 6px;
+            height: 180px;
+            background: linear-gradient(to top, #2E8B57, #52C670);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            transform-origin: bottom center;
+            animation: sway 6s infinite ease-in-out;
+        }
+
+        .flower {
+            position: absolute;
+            bottom: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #DDDD77, #A2DE70);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(162, 222, 112, 0.5);
+            z-index: 2;
+        }
+
+        .flower::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #FF9900;
+            z-index: 3;
+        }
+
+        /* Pollen particles */
+        .pollen-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: rgba(255, 214, 102, 0.8);
+            box-shadow: 0 0 10px rgba(255, 214, 102, 0.8);
+            opacity: 0;
+            z-index: 1;
+        }
+
+        /* Background enhancement */
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            background: radial-gradient(circle, rgba(255, 214, 102, 0.8) 0%, rgba(162, 222, 112, 0.3) 70%, transparent 100%);
+            width: 300px;
+            height: 300px;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        /* Leaves */
+        .leaf {
+            position: absolute;
+            background-color: #52C670;
+            width: 20px;
+            height: 40px;
+            border-radius: 50% 10% 50% 50%;
+            bottom: 70px;
+            z-index: 2;
+            transform-origin: bottom center;
+            box-shadow: 0 0 10px rgba(82, 198, 112, 0.2);
+        }
+
+        .leaf-1 {
+            left: calc(50% - 30px);
+            transform: rotate(-30deg);
+        }
+
+        .leaf-2 {
+            left: calc(50% + 10px);
+            transform: rotate(30deg);
+        }
+
+        /* Ground */
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 10%;
+            background: linear-gradient(to bottom, #0E1C0B, #0B0B19);
+            z-index: 1;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translate(var(--start-x), var(--start-y)) scale(1);
+                opacity: 0.9;
+            }
+            100% {
+                transform: translate(var(--end-x), var(--end-y)) scale(0.3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.05);
+            }
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: translateX(-50%) rotate(0deg);
+            }
+            50% {
+                transform: translateX(-50%) rotate(2deg);
+            }
+        }
+
+        /* Adapt for different screen sizes */
+        @media (max-width: 768px) {
+            .stem {
+                height: 140px;
+            }
+            
+            .flower {
+                bottom: 140px;
+                width: 50px;
+                height: 50px;
+            }
+            
+            .glow {
+                bottom: 120px;
+                width: 250px;
+                height: 250px;
+            }
+            
+            .leaf {
+                bottom: 50px;
+                width: 16px;
+                height: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stem {
+                height: 100px;
+            }
+            
+            .flower {
+                bottom: 100px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .glow {
+                bottom: 90px;
+                width: 200px;
+                height: 200px;
+            }
+            
+            .leaf {
+                bottom: 40px;
+                width: 14px;
+                height: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <div class="brand">pollen</div>
-            <div class="coming-soon">Coming Soon</div>
-            <h1>AI That Grows With You</h1>
-            <h2>We're building something new</h2>
-            <p>Our team is developing next-generation AI solutions. Stay updated on our progress.</p>
-            
-            <form class="signup-form" id="email-form" action="https://formsubmit.co/578761bededd12526fd059ae22f62352" method="POST">
-                <input type="email" name="email" placeholder="Your email address" class="email-input" required>
-                <input type="hidden" name="_subject" value="New subscriber from pollenhq.com">
-                <input type="hidden" name="_next" value="https://pollenhq.com/?success=true">
-                <button type="submit" class="submit-btn">Notify Me</button>
-            </form>
+    <div class="animation-container">
+        <!-- Glow effect -->
+        <div class="glow"></div>
+        
+        <!-- Ground -->
+        <div class="ground"></div>
+        
+        <!-- Plant -->
+        <div class="plant">
+            <div class="stem"></div>
+            <div class="flower"></div>
+            <div class="leaf leaf-1"></div>
+            <div class="leaf leaf-2"></div>
         </div>
+
+        <!-- Pollen particles will be generated by JavaScript -->
     </div>
-    
-    <!-- Visual elements -->
-    <div class="circle-artifact circle-lg"></div>
-    <div class="circle-artifact circle-md"></div>
-    <div class="circle-artifact circle-sm"></div>
-    
-    <div class="glow-orb orb-primary"></div>
-    <div class="glow-orb orb-secondary"></div>
-    <div class="glow-orb orb-accent"></div>
-    
-    <div class="hud-element hud-top-right"></div>
-    <div class="hud-element hud-bottom-left"></div>
-    
-    <div class="tech-line line-1"></div>
-    <div class="tech-line line-2"></div>
-    
-    <div class="copyright">&copy; 2025 pollen</div>
-    
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const flowerElement = document.querySelector('.flower');
+            const container = document.querySelector('.animation-container');
+
+            // Get flower position for pollen starting point
+            const flowerRect = flowerElement.getBoundingClientRect();
+            const flowerCenterX = flowerRect.left + flowerRect.width / 2;
+            const flowerCenterY = flowerRect.top + flowerRect.height / 2;
+
+            // Create and animate pollen particles
+            function createPollen() {
+                // Create between 1-3 pollen particles
+                const count = Math.floor(Math.random() * 3) + 1;
+                
+                for (let i = 0; i < count; i++) {
+                    setTimeout(() => {
+                        const particle = document.createElement('div');
+                        particle.className = 'pollen-particle';
+                        container.appendChild(particle);
+
+                        // Randomize pollen size slightly
+                        const size = 3 + Math.random() * 4;
+                        particle.style.width = `${size}px`;
+                        particle.style.height = `${size}px`;
+
+                        // Calculate start position (slightly randomized around flower center)
+                        const startX = flowerCenterX + (Math.random() * 20 - 10);
+                        const startY = flowerCenterY + (Math.random() * 20 - 10);
+                        
+                        // Calculate end position (random direction and distance)
+                        const angle = Math.random() * Math.PI * 2; // Random angle in radians
+                        const distance = 100 + Math.random() * 300; // Random distance
+                        const endX = startX + Math.cos(angle) * distance;
+                        const endY = startY - (Math.random() * 200 + 100); // Always move up with some randomness
+
+                        // Set position variables for animation
+                        particle.style.setProperty('--start-x', `${startX}px`);
+                        particle.style.setProperty('--start-y', `${startY}px`);
+                        particle.style.setProperty('--end-x', `${endX}px`);
+                        particle.style.setProperty('--end-y', `${endY}px`);
+                        
+                        // Set initial position
+                        particle.style.left = `${startX}px`;
+                        particle.style.top = `${startY}px`;
+                        
+                        // Apply animation
+                        const duration = 3 + Math.random() * 4; // Random duration between 3-7 seconds
+                        particle.style.animation = `float-up ${duration}s ease-out forwards`;
+                        
+                        // Remove particle after animation completes
+                        setTimeout(() => {
+                            if (particle.parentNode) {
+                                container.removeChild(particle);
+                            }
+                        }, duration * 1000);
+                        
+                    }, i * 200); // Slight delay between particles
+                }
+
+                // Schedule next pollen release
+                setTimeout(createPollen, Math.random() * 1000 + 500);
+            }
+
+            // Start creating pollen after a short delay
+            setTimeout(createPollen, 500);
+        });
+    </script>
 </body>
 </html>

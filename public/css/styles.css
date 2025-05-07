@@ -1,25 +1,5 @@
-/* pollen - Minimal Pre-launch CSS */
+/* Minimal Pollen Animation CSS */
 
-:root {
-    --primary-color: #5B8AF9;
-    --secondary-color: #00E7C7;
-    --accent-color: #FF7E5F;
-    --dark-bg: #0B0B19;
-    --dark-card: #141428;
-    --text-primary: #FFFFFF;
-    --text-secondary: #AAAACC;
-    --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    --gradient-accent: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
-    --transition-speed: 0.3s;
-    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    --shadow-soft: 0 8px 30px rgba(0,0,0,0.12);
-    --shadow-strong: 0 20px 40px rgba(0,0,0,0.2);
-    --border-radius-sm: 8px;
-    --border-radius-md: 12px;
-    --border-radius-lg: 24px;
-}
-
-/* Base Reset */
 * {
     margin: 0;
     padding: 0;
@@ -27,480 +7,223 @@
 }
 
 html, body {
-    overflow: hidden;
-    height: 100%;
     width: 100%;
-}
-
-html {
-    font-size: 62.5%; /* 10px = 1rem */
-}
-
-body {
-    font-family: var(--font-main);
-    line-height: 1.6;
-    background-color: var(--dark-bg);
-    color: var(--text-primary);
-    font-size: 1.6rem;
-    position: relative;
-}
-
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 2rem;
-}
-
-h1 {
-    font-size: clamp(4rem, 8vw, 8rem);
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: -0.02em;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s ease-out forwards 0.5s;
-}
-
-h2 {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    color: var(--text-secondary);
-    font-weight: 400;
-    margin-bottom: 3rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s ease-out forwards 0.7s;
-}
-
-p {
-    font-size: clamp(1.6rem, 2vw, 2rem);
-    color: var(--text-secondary);
-    line-height: 1.7;
-    max-width: 60rem;
-    margin-bottom: 3rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s ease-out forwards 0.9s;
-}
-
-.brand {
-    font-size: 2.4rem;
-    font-weight: 400;
-    color: var(--text-primary);
-    letter-spacing: 0.1em;
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out forwards;
-}
-
-/* Layout */
-.container {
-    width: 90%;
-    max-width: 140rem;
-    margin: 0 auto;
-    padding: 0 2rem;
     height: 100%;
+    overflow: hidden;
+    background-color: #0B0B19; /* Dark background */
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
-.content {
+.animation-container {
     position: relative;
-    z-index: 10;
+    width: 100%;
+    height: 100vh;
 }
 
-/* Animations */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Plant stem and base */
+.plant {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.stem {
+    position: absolute;
+    width: 6px;
+    height: 180px;
+    background: linear-gradient(to top, #2E8B57, #52C670);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 
-@keyframes float {
+.flower {
+    position: absolute;
+    bottom: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #DDDD77, #A2DE70);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(162, 222, 112, 0.5);
+    z-index: 2;
+}
+
+.flower::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #FF9900;
+    z-index: 3;
+}
+
+/* Pollen particles */
+.pollen-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 214, 102, 0.8);
+    bottom: 210px; /* Just above the flower */
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(255, 214, 102, 0.8);
+    opacity: 0;
+    z-index: 1;
+}
+
+/* Background enhancement */
+.glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.15;
+    background: radial-gradient(circle, rgba(255, 214, 102, 0.8) 0%, rgba(162, 222, 112, 0.3) 70%, transparent 100%);
+    width: 300px;
+    height: 300px;
+    bottom: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* Leaves */
+.leaf {
+    position: absolute;
+    background-color: #52C670;
+    width: 20px;
+    height: 40px;
+    border-radius: 50% 10% 50% 50%;
+    bottom: 70px;
+    z-index: 2;
+    transform-origin: bottom center;
+    box-shadow: 0 0 10px rgba(82, 198, 112, 0.2);
+}
+
+.leaf-1 {
+    left: calc(50% - 30px);
+    transform: rotate(-30deg);
+}
+
+.leaf-2 {
+    left: calc(50% + 10px);
+    transform: rotate(30deg);
+}
+
+/* Ground */
+.ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    background: linear-gradient(to bottom, #0E1C0B, #0B0B19);
+    z-index: 1;
+}
+
+@keyframes float-up {
     0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
+        transform: translate(-50%, 0) scale(1);
+        opacity: 0.9;
     }
     100% {
-        transform: translateY(0px);
+        transform: translate(calc(-50% + var(--x-travel)), calc(0px - var(--distance))) scale(0.3);
+        opacity: 0;
     }
 }
 
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.4;
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
     }
     50% {
-        transform: scale(1.05);
-        opacity: 0.6;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0.4;
+        transform: translateX(-50%) scale(1.05);
     }
 }
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
+/* Apply animation to the glow */
+.glow {
+    animation: pulse 4s infinite ease-in-out;
+}
+
+/* Gentle swaying for plant */
+@keyframes sway {
+    0%, 100% {
+        transform: translateX(-50%) rotate(0deg);
     }
-    to {
-        transform: rotate(360deg);
+    50% {
+        transform: translateX(-50%) rotate(2deg);
     }
 }
 
-/* Visual Elements */
-.hud-element {
-    position: absolute;
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards 1.5s;
+.stem {
+    animation: sway 6s infinite ease-in-out;
+    transform-origin: bottom center;
 }
 
-.hud-top-right {
-    top: 3rem;
-    right: 3rem;
-    width: 15rem;
-    height: 4rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--border-radius-sm);
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.hud-bottom-left {
-    bottom: 3rem;
-    left: 3rem;
-    width: 20rem;
-    height: 4rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--border-radius-sm);
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.coming-soon {
-    font-size: clamp(1.2rem, 1.5vw, 1.6rem);
-    color: var(--secondary-color);
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    margin-bottom: 2rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s ease-out forwards 1.1s;
-}
-
-/* Email Form */
-.signup-form {
-    display: flex;
-    max-width: 50rem;
-    margin-top: 2rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s ease-out forwards 1.3s;
-}
-
-.email-input {
-    flex-grow: 1;
-    height: 5rem;
-    padding: 0 2rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 2.5rem 0 0 2.5rem;
-    color: var(--text-primary);
-    font-size: 1.6rem;
-    font-family: var(--font-main);
-}
-
-.email-input:focus {
-    outline: none;
-    border-color: var(--secondary-color);
-}
-
-.submit-btn {
-    height: 5rem;
-    padding: 0 3rem;
-    background: var(--gradient-primary);
-    border: none;
-    border-radius: 0 2.5rem 2.5rem 0;
-    color: var(--text-primary);
-    font-weight: 600;
-    font-size: 1.6rem;
-    cursor: pointer;
-    transition: all var(--transition-speed) ease;
-}
-
-.submit-btn:hover {
-    background: var(--gradient-accent);
-}
-
-/* Glowing orbs */
-.glow-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    z-index: 0;
-    opacity: 0.4;
-    animation: pulse 8s infinite ease-in-out;
-}
-
-.orb-primary {
-    width: clamp(20rem, 40vw, 50rem);
-    height: clamp(20rem, 40vw, 50rem);
-    background: var(--primary-color);
-    top: -10%;
-    right: -15%;
-    animation: pulse 8s infinite ease-in-out;
-}
-
-.orb-secondary {
-    width: clamp(15rem, 30vw, 40rem);
-    height: clamp(15rem, 30vw, 40rem);
-    background: var(--secondary-color);
-    bottom: -20%;
-    left: -10%;
-    animation: pulse 10s infinite ease-in-out reverse;
-}
-
-.orb-accent {
-    width: clamp(10rem, 20vw, 30rem);
-    height: clamp(10rem, 20vw, 30rem);
-    background: var(--accent-color);
-    top: 50%;
-    left: 60%;
-    transform: translateY(-50%);
-    animation: pulse 12s infinite ease-in-out;
-}
-
-/* Particles */
-.particle {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    opacity: 0;
-    animation: fadeIn 0.3s ease-out forwards, float 8s infinite ease-in-out;
-}
-
-/* Futuristic lines */
-.tech-line {
-    position: absolute;
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
-    height: 1px;
-    width: 100%;
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards 1.8s;
-}
-
-.line-1 {
-    top: 15%;
-    left: 0;
-    animation-delay: 1.8s;
-}
-
-.line-2 {
-    top: 75%;
-    left: 0;
-    animation-delay: 2s;
-}
-
-.circle-artifact {
-    position: absolute;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards 2.2s, rotate 60s linear infinite;
-}
-
-.circle-lg {
-    width: clamp(30rem, 60vw, 80rem);
-    height: clamp(30rem, 60vw, 80rem);
-    border-width: 1px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.circle-md {
-    width: clamp(20rem, 40vw, 60rem);
-    height: clamp(20rem, 40vw, 60rem);
-    border-width: 2px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation-direction: reverse;
-}
-
-.circle-sm {
-    width: clamp(10rem, 20vw, 30rem);
-    height: clamp(10rem, 20vw, 30rem);
-    border-width: 1px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* Footer Text */
-.copyright {
-    position: absolute;
-    bottom: 3rem;
-    right: 3rem;
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.3);
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards 2.4s;
-}
-
-/* Back Link */
-.back-link {
-    position: absolute;
-    top: 3rem;
-    left: 3rem;
-    color: var(--text-secondary);
-    font-size: 1.6rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards 0.3s;
-    z-index: 100;
-}
-
-.back-link:hover {
-    color: var(--secondary-color);
-}
-
-.arrow {
-    display: inline-block;
-    transform: translateX(0);
-    transition: transform var(--transition-speed) ease;
-}
-
-.back-link:hover .arrow {
-    transform: translateX(-5px);
-}
-
-/* Contact Methods */
-.contact-method {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s ease-out forwards 1.1s;
-}
-
-.contact-method:nth-child(2) {
-    animation-delay: 1.3s;
-}
-
-.contact-info {
-    margin-top: 4rem;
-}
-
-.contact-icon {
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-    color: var(--secondary-color);
-    font-size: 1.8rem;
-}
-
-.contact-text {
-    font-size: 1.8rem;
-    color: var(--text-secondary);
-}
-
-.contact-text a {
-    color: var(--text-primary);
-    transition: color var(--transition-speed) ease;
-}
-
-.contact-text a:hover {
-    color: var(--secondary-color);
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    h1 {
-        font-size: clamp(3.5rem, 10vw, 5rem);
+/* Adapt for different screen sizes */
+@media (max-width: 768px) {
+    .stem {
+        height: 140px;
     }
     
-    h2 {
-        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    .flower {
+        bottom: 140px;
+        width: 50px;
+        height: 50px;
     }
     
-    .glow-orb {
-        filter: blur(40px);
+    .pollen-particle {
+        bottom: 165px;
     }
     
-    .signup-form {
-        flex-direction: column;
-        width: 100%;
+    .glow {
+        bottom: 120px;
+        width: 250px;
+        height: 250px;
     }
     
-    .email-input {
-        border-radius: 2.5rem;
-        margin-bottom: 1rem;
-        width: 100%;
-    }
-    
-    .submit-btn {
-        border-radius: 2.5rem;
-        width: 100%;
-    }
-    
-    .hud-element {
-        display: none;
+    .leaf {
+        bottom: 50px;
+        width: 16px;
+        height: 32px;
     }
 }
 
-@media screen and (max-width: 480px) {
-    .container {
-        padding: 0 1.5rem;
+@media (max-width: 480px) {
+    .stem {
+        height: 100px;
     }
     
-    h1 {
-        font-size: 3rem;
+    .flower {
+        bottom: 100px;
+        width: 40px;
+        height: 40px;
     }
     
-    h2 {
-        font-size: 1.8rem;
+    .pollen-particle {
+        bottom: 120px;
     }
     
-    p {
-        font-size: 1.6rem;
+    .glow {
+        bottom: 90px;
+        width: 200px;
+        height: 200px;
     }
     
-    .circle-artifact {
-        border-width: 1px;
-    }
-    
-    .copyright {
-        bottom: 2rem;
-        right: 2rem;
+    .leaf {
+        bottom: 40px;
+        width: 14px;
+        height: 28px;
     }
 }
